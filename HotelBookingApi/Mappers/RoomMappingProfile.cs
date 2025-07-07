@@ -13,7 +13,7 @@ public class RoomMappingProfile : Profile
             .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => src.Type.ToString()));
 
         CreateMap<Room, RoomDto>()
-            .ForMember(dest => dest.RoomId, opt => opt.MapFrom(src => src.Uuid))
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Uuid))
             .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => src.Type.ToString()));
     }
 }

@@ -16,7 +16,7 @@ public class BookingService(
         var booking = await bookingRepository.GetByReferenceAsync(reference);
 
         if (booking is null)
-            throw new NotFoundException($"Booking with reference {reference} was not found");
+            throw new NotFoundException($"Booking with reference {reference} was not found.");
 
         return mapper.Map<BookingDto>(booking);
     }
@@ -31,7 +31,7 @@ public class BookingService(
 
         if (availableRoom is null)
         {
-            throw new ConflictException($"No availability was found with room with Id {createBookingRequestDto.RoomId}");
+            throw new ConflictException($"No availability was found with room with Id {createBookingRequestDto.RoomId}.");
         }
 
         var booking = new Booking

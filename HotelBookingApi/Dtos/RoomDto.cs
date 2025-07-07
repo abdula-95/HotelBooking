@@ -2,7 +2,7 @@ namespace HotelBookingApi.Dtos;
 
 public class RoomDto
 {
-    public Guid RoomId { set; get; }
+    public Guid Id { set; get; }
 
     public string RoomType { get; set; } = null!;
 
