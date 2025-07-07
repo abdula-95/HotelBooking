@@ -34,7 +34,7 @@ public class BookingController(IBookingService bookingService) : ControllerBase
     [ProducesResponseType<BookingDto>(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
-    public async Task<IActionResult> CreateBookingAsync([FromBody] CreateBookingRequestDto createBookingRequestDto)
+    public async Task<IActionResult> CreateBooking([FromBody] CreateBookingRequestDto createBookingRequestDto)
     {
         if (createBookingRequestDto.StartDate >= createBookingRequestDto.EndDate)
         {
@@ -47,7 +47,7 @@ public class BookingController(IBookingService bookingService) : ControllerBase
         }
 
         return CreatedAtAction(
-            nameof(CreateBookingAsync),
+            nameof(CreateBooking),
             await bookingService.CreateAsync(createBookingRequestDto));
     }
 }

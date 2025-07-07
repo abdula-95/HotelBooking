@@ -27,6 +27,7 @@ The solution fulfills the following technical requirements:
 - Swagger documentation made available for testing.
 - Exposes a Seed and Reset endpoint to test the API.
 
+--- 
 ## API Design
 
 The API was designed following RESTful best practices. The API exposes the following endpoints to the consumer which are available via the Swagger UI:
@@ -42,6 +43,26 @@ No authorisation is required in order to execute these endpoints.
 
 ---
 
+##  Test Data
+
+The seed endpoint seeds the database with a static set of test data. This will create a number of hotels, along with rooms and a few bookings.
+The information listed below will help when testing the API.
+
+###  Hotels (names)
+
+- Alpha
+- Bravo
+- Charlie
+- Delta
+
+Each hotel contains exactly 6 rooms, two of each type: Single (1), Double (2), Deluxe (4)
+
+###  Bookings (references)
+
+Booking references are generated before a booking is created. These are unique and random partial GUIDs, therefore I am unable to supply a list of these references.
+
+---
+
 ##  Assumptions
 
 The following assumptions have been made when implementing the solution:
@@ -50,6 +71,7 @@ The following assumptions have been made when implementing the solution:
 - The availability search finds available rooms across all hotels. I have added the ability to narrow this down by passing in an optional **hotelId** param.
 - A booking is created against the specified room, otherwise the user is unable to create a booking if the room isn't available. This could be extended to fetch the next best availability but out of scope for this project.
 - The timestamp of dates is ignored, and we are only concerned about the date.
+- A deluxe room should have a capacity of 4.
 
 ---
 

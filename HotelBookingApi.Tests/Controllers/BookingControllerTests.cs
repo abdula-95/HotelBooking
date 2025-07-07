@@ -64,7 +64,7 @@ public class BookingControllerTests
     }
 
     [Fact]
-    public async Task CreateBookingAsync_ReturnsBadRequest_WhenStartDateGreaterThanEndDate()
+    public async Task CreateBooking_ReturnsBadRequest_WhenStartDateGreaterThanEndDate()
     {
         // Arrange
         var createBookingRequest = new CreateBookingRequestDto
@@ -76,7 +76,7 @@ public class BookingControllerTests
         };
 
         // Act
-        var result = await _controller.CreateBookingAsync(createBookingRequest);
+        var result = await _controller.CreateBooking(createBookingRequest);
 
         // Assert
         var response = Assert.IsType<BadRequestObjectResult>(result);
@@ -88,7 +88,7 @@ public class BookingControllerTests
     [Theory]
     [InlineData(0)]
     [InlineData(-1)]
-    public async Task CreateBookingAsync_ReturnsBadRequest_WhenGuestSizeIsLessThanZero(int guestSize)
+    public async Task CreateBooking_ReturnsBadRequest_WhenGuestSizeIsLessThanZero(int guestSize)
     {
         // Arrange
         var createBookingRequest = new CreateBookingRequestDto
@@ -100,7 +100,7 @@ public class BookingControllerTests
         };
 
         // Act
-        var result = await _controller.CreateBookingAsync(createBookingRequest);
+        var result = await _controller.CreateBooking(createBookingRequest);
 
         // Assert
         var response = Assert.IsType<BadRequestObjectResult>(result);
@@ -110,7 +110,7 @@ public class BookingControllerTests
     }
 
     [Fact]
-    public async Task CreateBookingAsync_ReturnsSuccessfulResponse()
+    public async Task CreateBooking_ReturnsSuccessfulResponse()
     {
         // Arrange
         var createBookingRequest = new CreateBookingRequestDto
@@ -128,7 +128,7 @@ public class BookingControllerTests
             .ReturnsAsync(new BookingDto());
 
         // Act
-        var result = await _controller.CreateBookingAsync(createBookingRequest);
+        var result = await _controller.CreateBooking(createBookingRequest);
 
         // Assert
         var response = Assert.IsType<CreatedAtActionResult>(result);
